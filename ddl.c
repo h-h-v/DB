@@ -1,5 +1,6 @@
 #include<stdlib.h>
 #include<string.h>
+#include <unistd.h>
 #define MAXCHAR 1000
 int CREATE_DB(char s[100]){
     char x[100]="mkdir ";
@@ -7,19 +8,29 @@ int CREATE_DB(char s[100]){
     system(x);
     return 0;
 }
-int USE_DB(char s[100]){
-    char x[100]="cd ";
+int DELETE_DB(char s[100]){
+    char x[100]="rm -rf ";
     strcat(x,s);
     system(x);
     return 0;
 }
+int USE_DB(char s[100]){
+    char x[100]="cd ";
+    strcat(x,s);
+    int tf = system(x);
+    if(tf==256){
+        printf("DB NOT FOUND\n");
+    }
+    return 0;
+}
 
-int select(char db[]){
+int selec(char db[]){
     char x[]="/data.csv";
     char y[100]="";
+    strcat(y,db);
     strcat(y,x);
-    printf("%ld\n",strlen(x));
-    FILE *pInput = fopen("DINGO/data.csv", "r");
+    if(access(y, F_OK) == 0){
+    FILE *pInput = fopen(y, "r");
     char row[MAXCHAR];
         while (feof(pInput) != 1)
     {
@@ -43,5 +54,9 @@ int select(char db[]){
         }
     }
     printf("\n%s\n","+---------+---------+---------+");
+    }
+    else{
+        printf("Database is empty\n");
+    }
     return 0;
 }
