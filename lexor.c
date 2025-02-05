@@ -4,12 +4,33 @@
 #include<ctype.h>
 int lexor(char p[],char db[]){
     int c=0;
+<<<<<<< HEAD
 if(p[0] == 'C' && p[1] == 'R' && p[2] == 'E' && p[3] == 'A' && p[4] == 'T' && p[5] == 'E'){
             char DB[100];
             strncpy(DB,p+6,strlen(p)-2);
             CREATE_DB(DB);
             c++;
     }
+=======
+if(p[0] == 'C' && p[1] == 'R' && p[2] == 'E' && p[3] == 'A' && p[4] == 'T' && p[5] == 'E' && p[6] == ' ' && p[7] == 'D' && p[8] == 'B'){
+            char DB[100];
+            strncpy(DB,p+9,strlen(p)-2);
+            CREATE_DB(DB);
+            c++;
+    }
+    /*if(p[0] == 'C' && p[1] == 'R' && p[2] == 'E' && p[3] == 'A' && p[4] == 'T' && p[5] == 'E' && p[6] == ' ' && p[7] == 'T' && p[8] == 'B'){
+            char TB[100];
+            int q = 9;
+            int cha = p[q];
+            while((cha>=65 && cha<=90)||(cha>=97 && cha<=122)){
+                q++;
+                cha = p[q];
+            }
+            strncpy(TB,p+10,q-10);
+            CREATE_TB(TB,db);
+            c++;
+    }*/
+>>>>>>> 730b162 (Initial commit)
         if(p[0] == 'S' && p[1] == 'E' && p[2] == 'L' && p[3] == 'E' && p[4] == 'C' && p[5] == 'T'){
             if(strlen(db)>1){
                 selec(db);

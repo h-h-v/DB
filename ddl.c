@@ -2,6 +2,23 @@
 #include<string.h>
 #include <unistd.h>
 #define MAXCHAR 1000
+<<<<<<< HEAD
+=======
+int CREATE_TB(char s[100],char db[]){
+    if(strlen(db)>1){
+        char x[100]=".lu";
+        char y[100]="touch ";
+        strcat(y,s);
+        strcat(y,x);
+        printf("%s\n",y);
+        system(y);
+    }
+    else{
+        printf("No DB has selected\n");
+    }
+    return 0;
+}
+>>>>>>> 730b162 (Initial commit)
 int CREATE_DB(char s[100]){
     char x[100]="mkdir ";
     strcat(x,s);
@@ -25,7 +42,11 @@ int USE_DB(char s[100]){
 }
 
 int selec(char db[]){
+<<<<<<< HEAD
     char x[]="/data.csv";
+=======
+    char x[]="/data.lu";
+>>>>>>> 730b162 (Initial commit)
     char y[100]="";
     strcat(y,db);
     strcat(y,x);
