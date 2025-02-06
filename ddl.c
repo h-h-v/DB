@@ -2,15 +2,31 @@
 #include<string.h>
 #include <unistd.h>
 #define MAXCHAR 1000
-<<<<<<< HEAD
-=======
+int INS_TB(char s[],char db[],char data[]){
+    char x[100]="";
+    strcat(x,db);
+    strcat(x,"/");
+    strcat(x,s);
+    strcat(x,".lu");
+    printf("%s\n",x);
+    if(access(x, F_OK) == 0){
+    FILE *pInput = fopen(x, "a");
+    fprintf(pInput, "\n%s",data);
+    fclose(pInput);
+    }
+    else{
+        printf("Database is empty\n");
+    }
+    return 0;
+}
 int CREATE_TB(char s[100],char db[]){
     if(strlen(db)>1){
-        char x[100]=".lu";
         char y[100]="touch ";
+        char ds[100];
+        strcat(y,db);
+        strcat(y,"/");
         strcat(y,s);
-        strcat(y,x);
-        printf("%s\n",y);
+        strcat(y,".lu");
         system(y);
     }
     else{
@@ -18,7 +34,6 @@ int CREATE_TB(char s[100],char db[]){
     }
     return 0;
 }
->>>>>>> 730b162 (Initial commit)
 int CREATE_DB(char s[100]){
     char x[100]="mkdir ";
     strcat(x,s);
@@ -41,17 +56,15 @@ int USE_DB(char s[100]){
     return 0;
 }
 
-int selec(char db[]){
-<<<<<<< HEAD
-    char x[]="/data.csv";
-=======
-    char x[]="/data.lu";
->>>>>>> 730b162 (Initial commit)
-    char y[100]="";
-    strcat(y,db);
-    strcat(y,x);
-    if(access(y, F_OK) == 0){
-    FILE *pInput = fopen(y, "r");
+int selec(char s[],char db[]){
+    char x[100]="";
+    strcat(x,db);
+    strcat(x,"/");
+    strcat(x,s);
+    strcat(x,".lu");
+    printf("%s\n",x);
+    if(access(x, F_OK) == 0){
+    FILE *pInput = fopen(x, "r");
     char row[MAXCHAR];
         while (feof(pInput) != 1)
     {
